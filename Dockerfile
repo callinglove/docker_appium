@@ -59,8 +59,8 @@ USER root
 RUN apt-get -y install supervisor
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-# RUN adb kill-server
-RUN adb start-server
-RUN adb devices
+RUN $ANDROID_HOME/platform-tools/adb kill-server
+RUN $ANDROID_HOME/platform-tools/adb start-server
+RUN $ANDROID_HOME/platform-tools/adb devices
 EXPOSE 22
 CMD ["/usr/bin/supervisord"]
